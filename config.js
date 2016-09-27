@@ -16,6 +16,7 @@ var config = {
 		used for Google URL shortener
 	*/
 	use_url_shortener:true,
+	use_react:true,
 	key:"AIzaSyDNu-_s700JSm7SXzLWVt3Rku5ZwbpaQZA",
 	css_dependencies:[
 

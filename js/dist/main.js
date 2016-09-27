@@ -1167,7 +1167,8 @@ jQuery(function($) {
 			"css_project",
 			"css_fab",
 			"css_dependencies",
-			"css_template"
+			"css_template",
+			"css_react"
 		],
 		data: {
 			lang: lang,
@@ -1237,6 +1238,7 @@ jQuery(function($) {
 				this.data.use_url_shortener = config.use_url_shortener;
 				this.data.title = config.title;
 				this.data.css_dependencies = config.css_dependencies;
+				this.data.use_react = config.use_react;
 					//ハッシュタグがあればハッシュタグからデータを復元
 				if (location.hash) {
 					var zip = new JSZip();
@@ -1845,6 +1847,12 @@ jQuery(function($) {
 			}
 		},
 		convert: {
+			reactPreview: function(text){
+				var components = this.getComputedProp("sortByCategory");
+				//textからpreview取得
+				var preview = parser.getPreview(text);
+				return "<div id=\"render\"></div><script type=\"text/babel\">React.render("+preview+",document.getElementById('render'));</script>";
+			},
 			preview: function(text) {
 				var components = this.getComputedProp("sortByCategory");
 				//textからpreview取得

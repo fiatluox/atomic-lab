@@ -46,6 +46,10 @@
           <input type="radio" id="ejs" class="mdl-radio__button" name="markup" value="ejs" data-bind="markup">
           <span class="mdl-radio__label">EJS</span>
         </label>
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="react">
+          <input type="radio" id="react" class="mdl-radio__button" name="markup" value="react" data-bind="markup">
+          <span class="mdl-radio__label">React</span>
+        </label>
       </p>
       <p>Styling</p>
       <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="css">
@@ -517,7 +521,15 @@
     <div class="atomicLabCard mdl-card mdl-shadow--2dp">
       <div class="atomicLabCard-title"><i class="material-icons">visibility</i> Preview</div>
       <div class="js-preview">
+      	<!-- BEGIN markup:touchnot#react -->
         {html}[preview]
+        <!-- END markup:touchnot#react -->
+        <!-- BEGIN markup:touch#react -->
+        <div id="react_render">
+        </div>
+        <!--#iclude id="css_react_preview" -->
+        {html}[react_preview]
+        <!-- END markup:touch#react -->
       </div>
     </div>
     <!-- END hasPreview:exist -->
@@ -626,10 +638,11 @@ gulp.task('default', function () {
     gulp.watch('components/**',['atomic']);
 });
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script>
 <template type="text/template" id="css_react">
 	<!-- BEGIN use_react:exist -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react-dom.min.js"></script>
+	<script src="./js/react.min.js"></script>
+	<script src="./js/react-dom.min.js"></script>
 	<!-- END use_react:exist -->
 </template>
 <script defer src="https://code.getmdl.io/1.2.0/material.min.js"></script>

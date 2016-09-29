@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "gulp": "*",
+    "react": "*",
+    "react-dom": "*",
+    "browserify": "*",
+    "reactify": "*",
+    "vinyl-source-stream": "*",
+    "jshint": "*",
+    "classnames": "*",
+    "es6-promise":"*",
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-es2015": "*",
+  	"babelify": "^7.2.0",
+  	"browserify": "^12.0.1"
+  }
+}

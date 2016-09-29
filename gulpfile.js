@@ -44,9 +44,14 @@ gulp.task('js', function () {
 
 gulp.task('atomic', function(){
 		atomic.build({
-			src:"components/",
+			src:"react/components/",
 			dist:"./resources/setting.json",
-			markup:"ejs"
+			markup:"jsx",
+			parser:{
+				start:/\/\*\*@doc/g,
+				end:/\*\*\//g,
+				body:/\/\*\*@doc(([\n\r\t]|.)*?)\*\*\//g
+			}
 		}).then(bs.reload());
 });
 
@@ -56,7 +61,7 @@ gulp.task('default', function () {
     });
     gulp.watch('js/src/**/*.js', ['js']);
     gulp.watch('css/src/**/*.scss', ['sass']);
-    gulp.watch('components/**',['atomic']);
+    gulp.watch('react/components/**',['atomic']);
 });
 
 gulp.task('sass-watch', function () {

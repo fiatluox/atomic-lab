@@ -1352,6 +1352,8 @@ jQuery(function($) {
 				componentHandler.upgradeDom();
 				if (this.data.editMode != "preview") {
 					this.applyMethod("runEditor", this.data.editMode);
+				}else if(this.data.markup == "react"){
+					babel.run(document.getElementById("react_preview").innerText);
 				}
 				$(".js-note code").each(function(){
 					Prism.highlightElement($(this)[0]);
@@ -1847,11 +1849,11 @@ jQuery(function($) {
 			}
 		},
 		convert: {
-			reactPreview: function(text){
+			react_preview:function(text){
 				var components = this.getComputedProp("sortByCategory");
-				//textからpreview取得
 				var preview = parser.getPreview(text);
-				return "<div id=\"render\"></div><script type=\"text/babel\">React.render("+preview+",document.getElementById('render'));</script>";
+				var imports = "" + parser.getImports(text);
+				return "<script type=\"text/babel\" id=\"react_preview\">"+preview+"</script>";
 			},
 			preview: function(text) {
 				var components = this.getComputedProp("sortByCategory");
@@ -1900,7 +1902,7 @@ jQuery(function($) {
 					}
 				}
 				//スタイルシート取得
-				var css = compiler.util.addNormalizeCss();;
+				var css = compiler.util.addNormalizeCss();
 				for (var i = 0, n = components.length; i < n; i++) {
 					var comp = components[i];
 					if (imports.indexOf(comp.name) !== -1 || this.data.id == comp.id) {

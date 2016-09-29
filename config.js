@@ -21,24 +21,27 @@ var config = {
 	css_dependencies:[
 
 	],
+	js_dependencies:[
+
+	],
 	parser:{
 		preview:{
-			start:/<!--@preview/g,
-			end:/-->/g,
-			body:/<!--@preview(([\n\r\t]|.)*?)-->/g
+			start:/\/\*\*@preview/g,
+			end:/\*\*\//g,
+			body:/\/\*\*@preview(([\n\r\t]|.)*?)\*\*\//g
 		},
 		note:{
-			start:/<!--@note/g,
-			end:/-->/g,
-			body:/<!--@note(([\n\r\t]|.)*?)-->/g
+			start:/\/\*\*@note/g,
+			end:/\*\*\//g,
+			body:/\/\*\*@note(([\n\r\t]|.)*?)\*\*\//g
 		},
 		template:{
-			start:/<!--@template(.*?)-->/g,
-			end:/<!--@\/template(.*?)-->/g,
-			body:/<!--@template(.*?)-->(([\n\r\t]|.)*?)<!--@\/template(.*?)-->/g
+			start:/\/\*\*@template(.*?)\*\*\//g,
+			end:/\/\*\*@\/template(.*?)\*\*\//g,
+			body:/\/\*\*@template(.*?)\*\*\/(([\n\r\t]|.)*?)\/\*\*@\/template(.*?)\*\*\//g
 		},
 		import:{
-			body:/<!--@import parts="(.*?)" -->/
+			body:/\/\*\*@import parts="(.*?)" \*\*\//
 		},
 		variable:{
 			mark:/{(.*?)}/g
